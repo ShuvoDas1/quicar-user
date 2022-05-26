@@ -1,0 +1,43 @@
+@import '../../base';
+
+.main__page {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(197, 197, 197);
+  .app__wrapper {
+      width: 440px;
+      height: calc(100vh - 60px);
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+
+    @media (max-width: $small_devices) {
+      height: 100vh;
+      width: 100%;
+      //box-shadow: -1px -1px 5px 2px rgba(238, 238, 238, 0.842);
+      //-webkit-box-shadow: -1px -1px 5px 2px rgba(238, 238, 238, 0.842);
+      //-moz-box-shadow: -1px -1px 5px 2px rgba(238, 238, 238, 0.842);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      border-radius: 0px;
+      -webkit-border-radius: 0px;
+      -moz-border-radius: 0px;
+      -ms-border-radius: 0px;
+      -o-border-radius: 0px;
+}
+
+    .content{
+        width:100%;
+        flex:1;
+        background-color:#ffffff;
+        overflow: auto;
+        -ms-overflow-style: none;
+        scrollbar-width: none; /* Firefox */
+    }
+  }
+}

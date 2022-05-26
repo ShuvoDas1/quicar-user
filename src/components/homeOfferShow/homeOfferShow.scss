@@ -1,0 +1,38 @@
+.home__offer__show{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+
+    .wrapper{
+        width: 250px;
+        height: 80px;
+        border: 1px solid #e7e7e7;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+
+        .require{
+            color: #919191;
+        }
+
+        .cross{
+            position: absolute;
+            top: 0px;
+            right: 0;
+            // background-color: red;
+            // padding: 10px;
+            padding-top: 5px;
+            padding-right: 5px;
+            cursor: pointer;
+
+            svg{
+                width: 20px;
+            }
+        }
+    }
+
+}
