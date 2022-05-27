@@ -26,6 +26,12 @@ export const RENTAL_REQUEST = RANTAL_END_POINT+"/car-rental/request-send"
 export const GET_RIDE_LIST = RANTAL_END_POINT+"/car-rental"
 export const GET_BIDDING_LIST = RANTAL_END_POINT+"/car-rental/get-all-bidding"
 
+
+// Notification
+
+export const GET_NOTIFICATION_LIST = RANTAL_END_POINT + "/notification"
+export const GET_NOTIFICATION_BADGE = RANTAL_END_POINT + "/notification/badge"
+
 // http://localhost:5000/api/v1/web/rental/car-rental/get-all-bidding?rideId=1
 
 // export const getUserList = "api/admin/user";

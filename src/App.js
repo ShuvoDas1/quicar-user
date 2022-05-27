@@ -34,7 +34,7 @@ import RideBiddingPage from './pages/ridehistory/RideBiddingPage';
 import RideDetailsPage from './pages/ridehistory/RideDetailsPage';
 import Chat from './components/Chat/Chat';
 import Join from './components/Join/Join';
-
+import 'react-toastify/dist/ReactToastify.css'
 import io from "socket.io-client";
 import { SOCKET_CONNECTION } from './network/urls';
 import { useEffect } from 'react';

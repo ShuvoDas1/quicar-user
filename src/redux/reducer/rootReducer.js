@@ -12,7 +12,7 @@ import homeReducer from '../home/homeReducer';
 import rideReducer from '../ride/rideReducer';
 import rideBiddingsReducer from '../rideBidding/rideBiddingReducer';
 import socketReducer from '../socket/socketReducer';
-
+import notificationReducer from "../notification/notificationReducer";
 
 
 const sidebarShowReducer = (state = true, { type }) => {
@@ -60,7 +60,8 @@ const rootReducer = combineReducers({
     homeReducer,
     rideReducer:rideReducer,
     rideBiddingsReducer:rideBiddingsReducer,
-    socketReducer:socketReducer
+    socketReducer:socketReducer,
+    notificationReducer
 })
 
 export default rootReducer

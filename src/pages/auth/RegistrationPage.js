@@ -20,17 +20,22 @@ import { log_in, update_user } from '../../redux/user/userAction'
 import PageLayout from '../../components/layout/PageLayout'
 import PageLayoutLoginCheckNon from '../../components/layout/PageLayoutLoginCheckNon'
 import MailOutlineIcon from '@mui/icons-material/MailOutline'
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import MobileDatePicker from '@mui/lab/MobileDatePicker'
 import AdapterDateFns from '@mui/lab/AdapterDateFns'
 import LocalizationProvider from '@mui/lab/LocalizationProvider'
 import Stack from '@mui/material/Stack'
 import InsertInvitationIcon from '@mui/icons-material/InsertInvitation'
 import PhotoCameraIcon from '@mui/icons-material/PhotoCamera'
+import LocalOfferOutlinedIcon from '@mui/icons-material/LocalOfferOutlined';
 
 import moment from 'moment'
 
 import AccountCircle from '@mui/icons-material/AccountCircle'
 import GlobalLoader from '../../components/loading/GlobalLoader'
+import { toast } from 'react-toastify'
+
+
 
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />
@@ -47,7 +52,9 @@ const RegistrationPage = () => {
   const [age, setAge] = useState('')
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
-  const [profileImage, setProfileImage] = useState(null)
+  const [profileImage, setProfileImage] = useState(null);
+  const [password, setPassword] = useState("");
+  const [referralByCode, setReferralByCode] = useState("")
 
   const { accessToken, user } = useSelector((state) => state.usereducer)
 
@@ -74,10 +81,12 @@ const RegistrationPage = () => {
   }, [accessToken, user])
 
   const onSubmit = async () => {
-    if (name == '' || !name) {
-      setErrorMessage('Enter a name please')
+    
+    if (!name) {
+      setErrorMessage('Enter Your Name')
       setOpen(true)
       return
+      
     }
 
     if (age == '' || !age) {
@@ -88,6 +97,11 @@ const RegistrationPage = () => {
 
     if (profileImage == '' || !profileImage) {
       setErrorMessage('Select a Profile Picture')
+      setOpen(true)
+      return
+    }
+    if (!password) {
+      setErrorMessage('Enter a password')
       setOpen(true)
       return
     }
@@ -103,7 +117,9 @@ const RegistrationPage = () => {
           name,
           profileImage,
           dob: moment(age).format('MM/DD/YYYY'),
-          email 
+          email,
+          password,
+          referralByCode,
         },
       })
 
@@ -229,6 +245,18 @@ const RegistrationPage = () => {
               }
             />
             <Box height={20} />
+            <Input
+              id="input-with-icon-adornment"
+              placeholder="Enter Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              startAdornment={
+                <InputAdornment position="start">
+                  <LockOutlinedIcon />
+                </InputAdornment>
+              }
+            />
+            <Box height={20} />
             <LocalizationProvider dateAdapter={AdapterDateFns}>
               <Stack spacing={3}>
                 <MobileDatePicker
@@ -254,6 +282,18 @@ const RegistrationPage = () => {
                 />
               </Stack>{' '}
             </LocalizationProvider>
+            <Box height={20} />
+            <Input
+              id="input-with-icon-adornment"
+              placeholder="Enter Referral Code(Optional)"
+              value={referralByCode}
+              onChange={(e) => setReferralByCode(e.target.value)}
+              startAdornment={
+                <InputAdornment position="start">
+                  <LocalOfferOutlinedIcon />
+                </InputAdornment>
+              }
+            />
             <Snackbar
               open={open}
               autoHideDuration={6000}
@@ -265,10 +305,10 @@ const RegistrationPage = () => {
                 severity="error"
                 sx={{ width: '100%' }}
               >
-                {' '}
-                {errorMessage}{' '}
-              </Alert>{' '}
-            </Snackbar>{' '}
+   
+                {errorMessage}
+              </Alert>
+            </Snackbar>
             <div style={{ height: '30px' }}> </div>{' '}
             <div>
               <Button

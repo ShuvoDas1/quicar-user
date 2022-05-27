@@ -9,11 +9,19 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import { useNavigate } from "react-router-dom";
 import RideSelection from '../rideSelection/RideSelection';
 import { useLocation } from 'react-router-dom'
+import { getNotificationBadge } from '../../redux/notification/notificationAction';
+import { useDispatch, useSelector } from 'react-redux';
+
 const Header = () => {
 
     const navigate = useNavigate();
     const location = useLocation();
+    const dispatch = useDispatch();
+
+    const {badge} = useSelector(state => state.notificationReducer)
+
     const [showRideMenu, setShowRideMenu] = useState(false);
+
 
     useEffect(() => {
         if (location.pathname === "/main/ride") {
@@ -23,6 +31,10 @@ const Header = () => {
         }
 
     }, [location.pathname]);
+
+    useEffect(()=>{
+        dispatch(getNotificationBadge())
+    },[])
 
 
     return (
@@ -73,7 +85,7 @@ const Header = () => {
                             color="inherit"
                             onClick={() => navigate('/notification')}
                         >
-                            <Badge badgeContent={2} color="error">
+                            <Badge badgeContent={badge} color="error">
                                 <NotificationsIcon style={{ color: 'black' }} />
                             </Badge>
                         </IconButton>
