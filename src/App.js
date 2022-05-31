@@ -1,54 +1,53 @@
-import './App.scss';
+import "./App.scss";
 import {
   BrowserRouter,
   Routes,
   Route,
   Navigate,
-  Outlet
+  Outlet,
 } from "react-router-dom";
-import LoginPage from './pages/auth/LoginPage';
-import MainPage from './pages/main/MainPage';
-import Notification from './pages/notification/Notification';
-import NotificationDetails from './pages/notification/NotificationDetails';
-import HomeFragment from './pages/main/fragment/HomeFragment';
-import RideFragment from './pages/main/fragment/RideFragment';
-import MoreFragment from './pages/main/fragment/MoreFragment';
-import RequestPage from './pages/ridehistory/RequestPage';
-import UpComingPage from './pages/ridehistory/UpComingPage';
-import CompletedPage from './pages/ridehistory/CompletedPage';
-import CancelPage from './pages/ridehistory/CancelPage';
-import ExpirePage from './pages/ridehistory/ExpirePage';
-import CarTypeList from './pages/ride/CarTypeList';
-import InputAddress from './pages/ride/InputAddress';
-import OverViewRideRequest from './pages/ride/OverViewRideRequest';
-import Distances from './pages/Directions';
-import MapDemo from './pages/MapDemo';
-import NewMaps from './components/map/NewMaps';
-import MyMap from './components/map/MyMap';
-import VerifyOtpPage from './pages/auth/VerifyOtpPage';
-import RegistrationPage from './pages/auth/RegistrationPage';
-import BannerDetails from './pages/banner/BannerDetails';
-import SuccessPage from './pages/ride/SuccessPage';
-import RideHistoryPage from './pages/ridehistory/RideHistoryPage';
-import RideBiddingPage from './pages/ridehistory/RideBiddingPage';
-import RideDetailsPage from './pages/ridehistory/RideDetailsPage';
-import Chat from './components/Chat/Chat';
-import Join from './components/Join/Join';
-import 'react-toastify/dist/ReactToastify.css'
+import LoginPage from "./pages/auth/LoginPage";
+import MainPage from "./pages/main/MainPage";
+import Notification from "./pages/notification/Notification";
+import NotificationDetails from "./pages/notification/NotificationDetails";
+import HomeFragment from "./pages/main/fragment/HomeFragment";
+import RideFragment from "./pages/main/fragment/RideFragment";
+import MoreFragment from "./pages/main/fragment/MoreFragment";
+import RequestPage from "./pages/ridehistory/RequestPage";
+import UpComingPage from "./pages/ridehistory/UpComingPage";
+import CompletedPage from "./pages/ridehistory/CompletedPage";
+import CancelPage from "./pages/ridehistory/CancelPage";
+import ExpirePage from "./pages/ridehistory/ExpirePage";
+import CarTypeList from "./pages/ride/CarTypeList";
+import InputAddress from "./pages/ride/InputAddress";
+import OverViewRideRequest from "./pages/ride/OverViewRideRequest";
+import Distances from "./pages/Directions";
+import MapDemo from "./pages/MapDemo";
+import NewMaps from "./components/map/NewMaps";
+import MyMap from "./components/map/MyMap";
+import VerifyOtpPage from "./pages/auth/VerifyOtpPage";
+import RegistrationPage from "./pages/auth/RegistrationPage";
+import BannerDetails from "./pages/banner/BannerDetails";
+import SuccessPage from "./pages/ride/SuccessPage";
+import RideHistoryPage from "./pages/ridehistory/RideHistoryPage";
+import RideBiddingPage from "./pages/ridehistory/RideBiddingPage";
+import RideDetailsPage from "./pages/ridehistory/RideDetailsPage";
+import Chat from "./components/Chat/Chat";
+import Join from "./components/Join/Join";
+import "react-toastify/dist/ReactToastify.css";
 import io from "socket.io-client";
-import { SOCKET_CONNECTION } from './network/urls';
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { socketConnect } from './redux/socket/socketAction';
+import { SOCKET_CONNECTION } from "./network/urls";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { socketConnect } from "./redux/socket/socketAction";
+import Tutorials from "./pages/tutorial/Tutorials";
 
 function App() {
-
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   // const {socket} = useSelector(state => state.socketReducer)
   useEffect(() => {
-    dispatch(socketConnect())
+    dispatch(socketConnect());
   }, []);
-
 
   // useEffect(() => {
   //   if(socket){
@@ -60,14 +59,23 @@ function App() {
   //   }
   // },[socket])
 
-
   return (
-
     <div>
       <BrowserRouter>
         <Routes>
-
-          <Route path="/" element={<Navigate replace to={`/main/${localStorage.getItem('mainPage') ? localStorage.getItem('mainPage') : 'home'}`} />} />
+          <Route
+            path="/"
+            element={
+              <Navigate
+                replace
+                to={`/main/${
+                  localStorage.getItem("mainPage")
+                    ? localStorage.getItem("mainPage")
+                    : "home"
+                }`}
+              />
+            }
+          />
           <Route path="/main/*" element={<MainPage />}>
             <Route index path="home" element={<HomeFragment />} />
             {/* <Route path="ride/*" element={<RideFragment />} >
@@ -80,11 +88,18 @@ function App() {
             <Route index path="ride/*" element={<RideHistoryPage />} />
             <Route path="more" element={<MoreFragment />} />
           </Route>
-
+          <Route path="/tutorials" element={<Tutorials />} />
           <Route index path="/ride-bidding/*" element={<RideBiddingPage />} />
           <Route index path="/ride-details/*" element={<RideDetailsPage />} />
 
-          <Route path="/car-rental/*" lement={<div><Outlet /></div>} >
+          <Route
+            path="/car-rental/*"
+            lement={
+              <div>
+                <Outlet />
+              </div>
+            }
+          >
             <Route index path="" element={<CarTypeList />} />
             <Route path="input-address" element={<InputAddress />} />
             <Route path="final-check" element={<OverViewRideRequest />} />
@@ -96,23 +111,21 @@ function App() {
           <Route path="/banner/:id" element={<BannerDetails />} />
 
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/verify-otp/:newUser/:phone" element={<VerifyOtpPage />} />
+          <Route
+            path="/verify-otp/:newUser/:phone"
+            element={<VerifyOtpPage />}
+          />
           <Route path="/register" element={<RegistrationPage />} />
           <Route path="/distances" element={<Distances />} />
           <Route path="/map" element={<NewMaps />} />
-
 
           <Route path="/message" element={<Join />} />
           <Route path="/chat/*" element={<Chat />} />
 
           <Route path="*" element={<Navigate replace to={`/main/home`} />} />
-
-
         </Routes>
       </BrowserRouter>
-
     </div>
-
 
     // <Layout />
   );

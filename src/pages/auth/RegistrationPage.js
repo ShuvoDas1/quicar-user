@@ -81,6 +81,12 @@ const RegistrationPage = () => {
   }, [accessToken, user])
 
   const onSubmit = async () => {
+
+    if (profileImage == '' || !profileImage) {
+      setErrorMessage('Select a Profile Picture')
+      setOpen(true)
+      return
+    }
     
     if (!name) {
       setErrorMessage('Enter Your Name')
@@ -89,22 +95,20 @@ const RegistrationPage = () => {
       
     }
 
+    if (!password) {
+      setErrorMessage('Enter a password')
+      setOpen(true)
+      return
+    }
+
     if (age == '' || !age) {
       setErrorMessage('Select your Date of Birth')
       setOpen(true)
       return
     }
 
-    if (profileImage == '' || !profileImage) {
-      setErrorMessage('Select a Profile Picture')
-      setOpen(true)
-      return
-    }
-    if (!password) {
-      setErrorMessage('Enter a password')
-      setOpen(true)
-      return
-    }
+    
+    
 
     setisLoading(true)
 

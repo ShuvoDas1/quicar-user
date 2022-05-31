@@ -32,6 +32,10 @@ export const GET_BIDDING_LIST = RANTAL_END_POINT+"/car-rental/get-all-bidding"
 export const GET_NOTIFICATION_LIST = RANTAL_END_POINT + "/notification"
 export const GET_NOTIFICATION_BADGE = RANTAL_END_POINT + "/notification/badge"
 
+// TUTORIAL 
+
+export const GET_TUTORIAL_LIST = RANTAL_END_POINT + "/tutorial"
+
 // http://localhost:5000/api/v1/web/rental/car-rental/get-all-bidding?rideId=1
 
 // export const getUserList = "api/admin/user";
