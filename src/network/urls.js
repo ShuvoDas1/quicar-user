@@ -36,6 +36,10 @@ export const GET_NOTIFICATION_BADGE = RANTAL_END_POINT + "/notification/badge"
 
 export const GET_TUTORIAL_LIST = RANTAL_END_POINT + "/tutorial"
 
+// POLICY
+
+export const GET_POLICY = RANTAL_END_POINT + "/privacy"
+
 // http://localhost:5000/api/v1/web/rental/car-rental/get-all-bidding?rideId=1
 
 // export const getUserList = "api/admin/user";

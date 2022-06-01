@@ -41,6 +41,8 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { socketConnect } from "./redux/socket/socketAction";
 import Tutorials from "./pages/tutorial/Tutorials";
+import Policy from "./pages/policy/Policy";
+import PolicyDetails from "./pages/policy/PolicyDetails";
 
 function App() {
   const dispatch = useDispatch();
@@ -88,13 +90,17 @@ function App() {
             <Route index path="ride/*" element={<RideHistoryPage />} />
             <Route path="more" element={<MoreFragment />} />
           </Route>
+          
+          <Route path="/policy" element={<Policy />} />
+          <Route path="/policy/details" element={<PolicyDetails />} />
+
           <Route path="/tutorials" element={<Tutorials />} />
           <Route index path="/ride-bidding/*" element={<RideBiddingPage />} />
           <Route index path="/ride-details/*" element={<RideDetailsPage />} />
 
           <Route
             path="/car-rental/*"
-            lement={
+            element={
               <div>
                 <Outlet />
               </div>

@@ -14,7 +14,7 @@ import rideBiddingsReducer from '../rideBidding/rideBiddingReducer';
 import socketReducer from '../socket/socketReducer';
 import notificationReducer from "../notification/notificationReducer";
 import tutorialReducer from "../tutorial/tutorialReducer";
-
+import policyReducer from "../policy/policyReducer";
 
 const sidebarShowReducer = (state = true, { type }) => {
     switch (type) {
@@ -63,7 +63,8 @@ const rootReducer = combineReducers({
     rideBiddingsReducer:rideBiddingsReducer,
     socketReducer:socketReducer,
     notificationReducer,
-    tutorialReducer
+    tutorialReducer,
+    policyReducer
 })
 
 export default rootReducer

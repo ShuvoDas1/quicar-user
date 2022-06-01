@@ -66,7 +66,7 @@ const MoreFragment = () => {
       title: "Privacy & Policy",
       icon: lock,
       active: true,
-      url: "",
+      url: "policy",
     },
     // {
     //     id: 8,
